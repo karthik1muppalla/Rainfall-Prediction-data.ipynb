@@ -1,0 +1,33 @@
+Here's the same PDF report generation code without comments:
+
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from datetime import datetime
+
+def generate_pdf_report(filename="report.pdf"):
+    c = canvas.Canvas(filename, pagesize=A4)
+    width, height = A4
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(100, height - 100, "Sales Report")
+    c.setFont("Helvetica", 12)
+    c.drawString(100, height - 120, f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    sales_data = [
+        ["Product", "Quantity", "Price", "Total"],
+        ["Apple", 10, 1.5, 15.0],
+        ["Banana", 5, 0.8, 4.0],
+        ["Orange", 8, 1.2, 9.6],
+    ]
+    y = height - 150
+    for row in sales_data:
+        x = 100
+        for item in row:
+            c.drawString(x, y, str(item))
+            x += 100
+        y -= 20
+    c.save()
+    print(f"Report saved as {filename}")
+
+generate_pdf_report()
+
+Let me know if you want a version for Excel, Word, or HTML reports.
+
