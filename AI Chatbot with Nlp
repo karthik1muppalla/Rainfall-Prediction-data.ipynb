@@ -1,0 +1,9 @@
+def chat_with_bot():
+    print("Hello, I am your chatbot! Type 'exit' to end the conversation.")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == 'exit':
+            print("Chatbot: Goodbye! Have a nice day!")
+            break
+        response = chatbot.respond(user_input)
+        print(f"Chatbot: {response}")
